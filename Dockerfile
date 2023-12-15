@@ -62,3 +62,20 @@ RUN sudo apt-get clean \
 ENV CCACHE_MAXSIZE=1G
 ENTRYPOINT ["/ardupilot_entrypoint.sh"]
 CMD ["bash"]
+
+# SITL and GUI related packages
+RUN sudo apt update
+RUN sudo apt install --no-install-recommends -y \
+    flightgear \
+    libgtk-3-dev \
+    libsfml-dev
+
+RUN pip install --upgrade \
+    numpy \
+    console \
+    map \
+    wxwidgets \
+    opencv-python \
+    matplotlib \
+    mavproxy \
+    pymavlink
